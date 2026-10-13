@@ -39,13 +39,14 @@ The static two-page website for **[www.techforceconsulting.com](https://www.tech
 All seven photos are in place. Every one comes from your AI-generated consulting collage, so there are no stock-photo licences to worry about.
 
 - **Sector cards:** cropped to 16:9. The baked-in labels and the "restricted/confidential" document markings were removed.
-- **Hero and services header:** softened and darkened on purpose, so they read as atmosphere behind the text.
+- **Home hero:** formally dressed consultants discussing reports around a conference table. The headline side is darkened for readability, and the people show clearly on the right.
+- **Services header:** softened and darkened on purpose, so it reads as atmosphere behind the text.
 
 > **Upgrade when you have time:** the collage was only 1024 px wide, so the photos are slightly soft on high-resolution screens. Regenerate each scene **on its own, at 1600 px wide or more, with no text labels**, and save it over the file with the same name. No code changes are needed. If a sector photo ever goes missing, its card shows a navy blueprint panel instead of a broken image.
 
 | Filename | Where it appears | Suggested scene for a regenerated version | Size |
 |---|---|---|---|
-| `consulting-hero-boardroom.jpg` | Home hero (behind text, darkened) | Indian engineering consultants reviewing diagnostic reports around a conference table | 1920 × 1080 |
+| `consulting-hero-boardroom.jpg` | Home hero (people visible on the right; keep faces right of centre) | Indian engineering consultants reviewing diagnostic reports around a conference table | 1920 × 1080 |
 | `consulting-lab-metallurgy.jpg` | Services page header (darkened) | Consultants reviewing failure-analysis drawings in an engineering office or lab | 1920 × 1080 |
 | `consulting-meeting-oil-gas.jpg` | Oil & Gas card | Reviewing pipeline weld inspection reports in a meeting room | 1200 × 675 |
 | `consulting-meeting-defence.jpg` | Defence card | Examining metallurgical test reports in a modern lab | 1200 × 675 |
