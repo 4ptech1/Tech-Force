@@ -13,8 +13,8 @@ The static two-page website for **[www.techforceconsulting.com](https://www.tech
 
 ```
 /                          ← this folder becomes public_html
-├── index.html             Home: hero, core expertise, sectors, why us, CTA
-├── services.html          Capabilities, 4-step process, Contact/RFQ form
+├── index.html             Home: hero, 5 industry sectors, 2 core disciplines, why us, CTA
+├── services.html          Failure analysis + welding deep-dives, 4-step process, Contact/RFQ form
 ├── contact.php            Form handler (emails enquiries)
 ├── .htaccess              Security headers, caching, www redirect, hides .git/README
 ├── robots.txt
@@ -25,27 +25,39 @@ The static two-page website for **[www.techforceconsulting.com](https://www.tech
     ├── js/main.js         Mobile menu, form submission, small helpers
     ├── fonts/             IBM Plex Sans & Mono (self-hosted, open-source licence)
     └── images/
-        ├── logo-mark.png / logo-mark-light.png   TF monogram (header / footer)
-        ├── hero-industrial-1920.webp / -960.webp  Home hero background
-        ├── services-header-1920.webp / -960.webp  Services page header
-        ├── sector-aerospace.webp
-        ├── sector-defence.webp
-        ├── sector-railways.webp
+        ├── logo-mark.png / logo-mark-light.png      TF monogram (header / footer)
+        ├── hero-industrial-1920.webp / -960.webp     Fallback for the home hero
+        ├── services-header-1920.webp / -960.webp     Fallback for the services header
         ├── og-image.jpg            Preview image for WhatsApp/LinkedIn shares
         ├── apple-touch-icon.png
         └── favicon-64.png
 ```
 
-### Swapping images
+### Adding the consulting photos
 
-To swap an image, replace the file in `assets/images/` and **keep the same filename**. If your new image is a `.jpg`, either convert it to `.webp` (for example at squoosh.app) or change the matching `src="…"` in the HTML.
+The pages already point at seven photos that **you add whenever you're ready**. Until a file exists, the site falls back gracefully:
 
-Recommended sizes:
+- The hero and the services header show the existing plant photo.
+- Each sector card shows a navy blueprint panel with a sector icon. It's designed to look finished, so the photos are optional.
 
-| Image | Size |
-|---|---|
-| Sector images | about 700 × 1100 px (portrait) |
-| Hero and header images | 1920 px wide, plus a 960 px copy for phones |
+To add a photo, save it in `assets/images/` with **exactly** the filename below, then push or upload it. No code changes are needed.
+
+| Filename | Where it appears | Suggested scene | Size |
+|---|---|---|---|
+| `consulting-hero-boardroom.jpg` | Home hero (behind text, darkened) | Indian engineering consultants reviewing technical blueprints in a corporate meeting room | 1920 × 1080 |
+| `consulting-lab-metallurgy.jpg` | Services page header | Consultants examining metallurgical reports in a modern engineering lab | 1920 × 1080 |
+| `consulting-meeting-oil-gas.jpg` | Oil & Gas card | Reviewing pipeline weld inspection reports in a meeting room | 1200 × 675 |
+| `consulting-meeting-defence.jpg` | Defence card | Examining metallurgical test reports in a modern lab | 1200 × 675 |
+| `consulting-meeting-aerospace.jpg` | Aerospace card | Discussing fractography results for an aerospace component | 1200 × 675 |
+| `consulting-meeting-railways.jpg` | Railways card | Reviewing bogie-frame welding blueprints | 1200 × 675 |
+| `consulting-meeting-transportation.jpg` | Transportation card | Discussing vehicle chassis failure diagnostics around a conference table | 1200 × 675 |
+
+Tips:
+
+- **Landscape 16:9.** Keep faces and key details away from the bottom-left of sector photos, because the sector name sits there.
+- **Compress before uploading:** aim for under 300 KB for the hero and header, and under 150 KB for each card (squoosh.app, "MozJPEG", quality about 75).
+- **Make each sector recognisable.** Include a sector cue in every shot: a pipeline drawing, an aircraft part, a bogie drawing, a truck chassis. Otherwise five meeting-room photos look identical.
+- **Don't caption AI-generated people as your team.** The alt text describes them as consultants in a meeting, which is accurate; don't add "Meet our engineers" style labels.
 
 ---
 
@@ -55,11 +67,9 @@ Recommended sizes:
    - The form sends from and to this address. Hostinger only delivers PHP mail when the "From" address is a real mailbox on your domain.
    - To use a different address, edit `RECIPIENT` and `FROM_ADDRESS` at the top of `contact.php`, and update the email shown in both HTML pages.
 2. **Check the copy against what you actually offer.**
-   - This applies especially to the standards listed (ASME IX, AWS D17.1, EN 15085, RDSO and so on) and the testing methods (SEM, eddy current and so on).
+   - This applies especially to the standards listed (ASME IX, API 1104, AWS D17.1, EN 15085, BS 7910, NACE MR0175, RDSO and so on), the testing methods (SEM, eddy current and so on) and advanced joining (laser, electron-beam, fitness-for-purpose assessment).
    - Remove anything you can't deliver yourself or through a partner lab.
-3. **Image rights:**
-   - The sector images are your AI-generated triptych.
-   - The two refinery photos (hero and services header) look like stock photos. Make sure you hold a licence for them, or replace them.
+3. **Image rights:** the two refinery photos (the hero and services-header fallbacks) look like stock photos. Make sure you hold a licence for them, or replace them by adding the consulting photos above.
 4. **Contact details:** consider adding a phone number and city to the footer and contact section. Indian B2B buyers often call first.
 
 ---

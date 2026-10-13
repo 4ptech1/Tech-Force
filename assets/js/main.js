@@ -43,7 +43,6 @@
 
   var statusBox = form.querySelector('[data-form-status]');
   var submitBtn = form.querySelector('[data-submit]');
-  var serviceSelect = form.querySelector('[name="service"]');
   var SUCCESS = 'Thank you — your request has been sent. Our engineers will be in touch shortly.';
   var GENERIC_ERROR = 'Sorry, your request could not be sent. Please try again or email info@techforceconsulting.com.';
 
@@ -52,26 +51,31 @@
     statusBox.textContent = message;
   }
 
-  function preselectService(value) {
-    if (!value || !serviceSelect) return;
-    var exists = Array.prototype.some.call(serviceSelect.options, function (o) { return o.value === value; });
-    if (exists) serviceSelect.value = value;
+  // Pre-fill the "service" / "sector" dropdowns from a query string such as ?sector=railways
+  function preselect(query) {
+    var params = new URLSearchParams(query);
+    ['service', 'sector'].forEach(function (name) {
+      var select = form.querySelector('[name="' + name + '"]');
+      var value = params.get(name);
+      if (!select || !value) return;
+      var exists = Array.prototype.some.call(select.options, function (o) { return o.value === value; });
+      if (exists) select.value = value;
+    });
   }
 
-  // "Discuss …" buttons link to ?service=xyz#contact — preselect without a page reload.
-  document.querySelectorAll('a[href^="?service="]').forEach(function (link) {
+  // In-page "Discuss …" buttons link to ?service=xyz#contact — preselect without a page reload.
+  document.querySelectorAll('a[href^="?service="], a[href^="?sector="]').forEach(function (link) {
     link.addEventListener('click', function (e) {
       e.preventDefault();
-      var value = new URLSearchParams(link.getAttribute('href').split('#')[0]).get('service');
-      preselectService(value);
+      preselect(link.getAttribute('href').split('#')[0]);
       document.getElementById('contact').scrollIntoView();
       form.querySelector('[name="name"]').focus({ preventScroll: true });
     });
   });
 
-  // Handle arrivals via URL (e.g. shared links or the no-JS PHP redirect).
+  // Arrivals from the home page's sector cards, shared links, or the no-JS PHP redirect.
   var params = new URLSearchParams(window.location.search);
-  preselectService(params.get('service'));
+  preselect(window.location.search);
   if (params.get('status') === 'sent') {
     showStatus('success', SUCCESS);
   } else if (params.get('status') === 'error') {
