@@ -26,30 +26,27 @@ The static two-page website for **[www.techforceconsulting.com](https://www.tech
     ├── fonts/             IBM Plex Sans & Mono (self-hosted, open-source licence)
     └── images/
         ├── logo-mark.png / logo-mark-light.png      TF monogram (header / footer)
-        ├── hero-industrial-1920.webp / -960.webp     Fallback for the home hero
-        ├── services-header-1920.webp / -960.webp     Fallback for the services header
-        ├── og-image.jpg            Preview image for WhatsApp/LinkedIn shares
+        ├── consulting-hero-boardroom.jpg             Home hero background
+        ├── consulting-lab-metallurgy.jpg             Services page header background
+        ├── consulting-meeting-<sector>.jpg           The five sector cards
+        ├── og-image.jpg            Branded preview card for WhatsApp/LinkedIn shares
         ├── apple-touch-icon.png
         └── favicon-64.png
 ```
 
-### Adding the consulting photos
+### Photos
 
-**Status:** the five sector photos are in place. They were cropped from your collage, with the baked-in labels and the "restricted/confidential" document markings removed. The hero and the services-header photos are still to come.
+All seven photos are in place. Every one comes from your AI-generated consulting collage, so there are no stock-photo licences to worry about.
 
-> The sector photos were cut from a 1024 px-wide collage, so they're slightly soft on high-resolution screens. When you have time, regenerate each scene **on its own, at 1600 px wide or more, with no text labels**, and replace the files using the same names.
+- **Sector cards:** cropped to 16:9. The baked-in labels and the "restricted/confidential" document markings were removed.
+- **Hero and services header:** softened and darkened on purpose, so they read as atmosphere behind the text.
 
-The pages point at seven photos in total. When a file is missing, the site falls back gracefully:
+> **Upgrade when you have time:** the collage was only 1024 px wide, so the photos are slightly soft on high-resolution screens. Regenerate each scene **on its own, at 1600 px wide or more, with no text labels**, and save it over the file with the same name. No code changes are needed. If a sector photo ever goes missing, its card shows a navy blueprint panel instead of a broken image.
 
-- The hero and the services header show the existing plant photo.
-- Each sector card shows a navy blueprint panel with a sector icon. It's designed to look finished, so the photos are optional.
-
-To add a photo, save it in `assets/images/` with **exactly** the filename below, then push or upload it. No code changes are needed.
-
-| Filename | Where it appears | Suggested scene | Size |
+| Filename | Where it appears | Suggested scene for a regenerated version | Size |
 |---|---|---|---|
-| `consulting-hero-boardroom.jpg` | Home hero (behind text, darkened) | Indian engineering consultants reviewing technical blueprints in a corporate meeting room | 1920 × 1080 |
-| `consulting-lab-metallurgy.jpg` | Services page header | Consultants examining metallurgical reports in a modern engineering lab | 1920 × 1080 |
+| `consulting-hero-boardroom.jpg` | Home hero (behind text, darkened) | Indian engineering consultants reviewing diagnostic reports around a conference table | 1920 × 1080 |
+| `consulting-lab-metallurgy.jpg` | Services page header (darkened) | Consultants reviewing failure-analysis drawings in an engineering office or lab | 1920 × 1080 |
 | `consulting-meeting-oil-gas.jpg` | Oil & Gas card | Reviewing pipeline weld inspection reports in a meeting room | 1200 × 675 |
 | `consulting-meeting-defence.jpg` | Defence card | Examining metallurgical test reports in a modern lab | 1200 × 675 |
 | `consulting-meeting-aerospace.jpg` | Aerospace card | Discussing fractography results for an aerospace component | 1200 × 675 |
@@ -59,6 +56,7 @@ To add a photo, save it in `assets/images/` with **exactly** the filename below,
 Tips:
 
 - **Landscape 16:9.** Keep faces and key details away from the bottom-left of sector photos, because the sector name sits there.
+- **Never include** classified-looking stamps or real company logos.
 - **Compress before uploading:** aim for under 300 KB for the hero and header, and under 150 KB for each card (squoosh.app, "MozJPEG", quality about 75).
 - **Make each sector recognisable.** Include a sector cue in every shot: a pipeline drawing, an aircraft part, a bogie drawing, a truck chassis. Otherwise five meeting-room photos look identical.
 - **Don't caption AI-generated people as your team.** The alt text describes them as consultants in a meeting, which is accurate; don't add "Meet our engineers" style labels.
@@ -73,7 +71,7 @@ Tips:
 2. **Check the copy against what you actually offer.**
    - This applies especially to the standards listed (ASME IX, API 1104, AWS D17.1, EN 15085, BS 7910, NACE MR0175, RDSO and so on), the testing methods (SEM, eddy current and so on) and advanced joining (laser, electron-beam, fitness-for-purpose assessment).
    - Remove anything you can't deliver yourself or through a partner lab.
-3. **Image rights:** the two refinery photos (the hero and services-header fallbacks) look like stock photos. Make sure you hold a licence for them, or replace them by adding the consulting photos above.
+3. **Images:** all photos are your own AI-generated artwork. Don't add any document stamps, client logos or "classified" markings when you regenerate them.
 4. **Contact details:** consider adding a phone number and city to the footer and contact section. Indian B2B buyers often call first.
 
 ---
