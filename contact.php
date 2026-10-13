@@ -18,12 +18,18 @@ const FROM_ADDRESS = 'info@techforceconsulting.com';  // must be a mailbox on th
 const SITE_NAME    = 'Tech Force Consulting Engineers';
 const RETURN_PAGE  = '/services.html';
 
-const SECTORS  = ['Aerospace', 'Defence', 'Railways', 'Other'];
+const SECTORS = [
+    'oil-gas'        => 'Oil & Gas',
+    'defence'        => 'Defence',
+    'aerospace'      => 'Aerospace',
+    'railways'       => 'Railways',
+    'transportation' => 'Transportation',
+    'other'          => 'Other',
+];
 const SERVICES = [
     'failure-analysis' => 'Material Failure Analysis',
-    'welding'          => 'Welding Processes',
-    'coining'          => 'Coining & Precision Forming',
-    'other'            => 'Multiple / Not sure yet',
+    'welding'          => 'Joining & Welding Engineering',
+    'both'             => 'Both / Not sure yet',
 ];
 
 // ------------------------------------------------------------------ helpers
@@ -88,7 +94,7 @@ if ($name === '' || $company === '') {
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     respond(false, 'Please enter a valid email address.', 422);
 }
-if (!in_array($sector, SECTORS, true)) {
+if (!array_key_exists($sector, SECTORS)) {
     respond(false, 'Please select an industry sector.', 422);
 }
 if (!array_key_exists($service, SERVICES)) {
@@ -100,7 +106,8 @@ if (mb_strlen($message) < 20) {
 
 // ------------------------------------------------------------------ send
 $serviceLabel = SERVICES[$service];
-$subject = 'New RFQ: ' . $serviceLabel . ' — ' . $company;
+$sectorLabel  = SECTORS[$sector];
+$subject = 'New RFQ: ' . $serviceLabel . ' (' . $sectorLabel . ') — ' . $company;
 
 $body = implode("\n", [
     'New enquiry from the website contact form',
@@ -109,7 +116,7 @@ $body = implode("\n", [
     'Company:  ' . $company,
     'Email:    ' . $email,
     'Phone:    ' . ($phone !== '' ? $phone : '—'),
-    'Sector:   ' . $sector,
+    'Sector:   ' . $sectorLabel,
     'Service:  ' . $serviceLabel,
     '',
     'Message:',
