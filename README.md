@@ -35,7 +35,11 @@ The static two-page website for **[www.techforceconsulting.com](https://www.tech
 
 ### Adding the consulting photos
 
-The pages already point at seven photos that **you add whenever you're ready**. Until a file exists, the site falls back gracefully:
+**Status:** the five sector photos are in place. They were cropped from your collage, with the baked-in labels and the "restricted/confidential" document markings removed. The hero and the services-header photos are still to come.
+
+> The sector photos were cut from a 1024 px-wide collage, so they're slightly soft on high-resolution screens. When you have time, regenerate each scene **on its own, at 1600 px wide or more, with no text labels**, and replace the files using the same names.
+
+The pages point at seven photos in total. When a file is missing, the site falls back gracefully:
 
 - The hero and the services header show the existing plant photo.
 - Each sector card shows a navy blueprint panel with a sector icon. It's designed to look finished, so the photos are optional.
