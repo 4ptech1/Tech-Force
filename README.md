@@ -5,6 +5,7 @@ The static two-page website for **[www.techforceconsulting.com](https://www.tech
 - **No build step.** It's plain HTML, CSS and JavaScript, so whatever is in this repo is exactly what goes live.
 - **Two pages:** `index.html` (home, sectors and value proposition) and `services.html` (capabilities, process and the RFQ form).
 - **Contact form:** `contact.php` emails each enquiry using Hostinger's built-in PHP mail. You don't need a third-party form service.
+- **No third-party requests.** Fonts, images and scripts are all served from your own domain, which makes pages faster and means nothing tracks your visitors.
 
 ---
 
@@ -22,6 +23,7 @@ The static two-page website for **[www.techforceconsulting.com](https://www.tech
 └── assets/
     ├── css/styles.css     All styling (brand colours are at the top as variables)
     ├── js/main.js         Mobile menu, form submission, small helpers
+    ├── fonts/             IBM Plex Sans & Mono (self-hosted, open-source licence)
     └── images/
         ├── logo-mark.png / logo-mark-light.png   TF monogram (header / footer)
         ├── hero-industrial-1920.webp / -960.webp  Home hero background
@@ -88,12 +90,9 @@ Best for ongoing edits: every push to `main` updates the live site automatically
 
 ### 1. Put the code on GitHub
 
-This repo already lives at `github.com/4ptech1/tech-force`. Make sure the finished code is on the **`main`** branch, either by merging the pull request or by running:
+This repo already lives at `github.com/4ptech1/Tech-Force`, and the finished site is on the **`main`** branch.
 
-```bash
-git checkout -b main            # or: git checkout main && git merge <feature-branch>
-git push -u origin main
-```
+> One-time tidy-up: on GitHub, go to **Settings → General → Default branch** and set it to `main`.
 
 *Starting from scratch elsewhere?*
 
@@ -112,8 +111,8 @@ git push -u origin main
 2. **`public_html` must be empty** before the first deploy. Delete `default.php` and any other files in it using File Manager.
 3. Under **Create a New Repository**, fill in:
    - **Repository:**
-     - Public repo: `https://github.com/4ptech1/tech-force.git`
-     - Private repo: `git@github.com:4ptech1/tech-force.git` (see step 4)
+     - Public repo: `https://github.com/4ptech1/Tech-Force.git`
+     - Private repo: `git@github.com:4ptech1/Tech-Force.git` (see step 4)
    - **Branch:** `main`
    - **Directory:** leave **empty**, so it deploys straight into `public_html`
 4. **Private repo only:** copy the **SSH key** that hPanel shows on the GIT page. Then, on GitHub, go to **repo → Settings → Deploy keys → Add deploy key**, paste the key, and leave "write access" unticked.
@@ -148,5 +147,6 @@ git push -u origin main
 - **Text:** edit `index.html` or `services.html` directly. Every section is labelled with a comment, for example `<!-- Sectors -->`.
 - **Colours:** change the variables at the top of `assets/css/styles.css`. `--navy` and `--cyan` are sampled from the logo.
 - **After editing CSS or JS:** bump the version number in **both** HTML files so visitors don't see a cached copy. For example, change `styles.css?v=1` to `styles.css?v=2`, and do the same for `main.js?v=1`.
+- **Spam:** the form has a hidden "honeypot" field that catches most bots. If spam still gets through, adding Cloudflare Turnstile (free) is the next step.
 - **Preview locally:** double-click `index.html` to open it in a browser.
   - The form only works when PHP is running. To test it, run `php -S localhost:8000` in this folder and open `http://localhost:8000`.

@@ -3,6 +3,20 @@
    Plain CSS, no build step. Brand colours sampled from the logo.
    ========================================================================== */
 
+/* IBM Plex (SIL Open Font License, see assets/fonts/OFL.txt), self-hosted, Latin subset */
+@font-face {
+  font-family: "IBM Plex Sans"; font-style: normal; font-weight: 100 700; font-display: swap;
+  src: url("../fonts/ibm-plex-sans-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap;
+  src: url("../fonts/ibm-plex-mono-500-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono"; font-style: normal; font-weight: 600; font-display: swap;
+  src: url("../fonts/ibm-plex-mono-600-latin.woff2") format("woff2");
+}
+
 :root {
   /* Brand */
   --navy: #2a3a88;          /* logo navy */
@@ -54,10 +68,15 @@ a:hover { color: var(--cyan-700); }
 h1, h2, h3, h4 { color: var(--ink); line-height: 1.2; margin: 0 0 .5em; font-weight: 600; letter-spacing: -.015em; }
 h1 { font-size: clamp(2.1rem, 4.6vw, 3.6rem); letter-spacing: -.025em; }
 h2 { font-size: clamp(1.75rem, 3.2vw, 2.5rem); }
+h1, h2, h3 { text-wrap: balance; }
 h3 { font-size: 1.25rem; }
-p { margin: 0 0 1em; }
+p { margin: 0 0 1em; text-wrap: pretty; }
 ul, ol { margin: 0; padding: 0; }
 :focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; border-radius: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
+  .cap-card:hover, .sector-card:hover .sector-media img { transform: none !important; }
+}
 
 .container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
 .visually-hidden {
@@ -221,6 +240,8 @@ ul, ol { margin: 0; padding: 0; }
 .cap-card li { position: relative; padding-left: 20px; font-size: .9688rem; }
 .cap-card li::before { content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 2px; background: var(--cyan); }
 .cap-card .link-arrow { margin-top: auto; }
+.cap-card .link-arrow::after { content: ""; position: absolute; inset: 0; border-radius: inherit; } /* whole card is clickable */
+.cap-card:focus-within { border-color: var(--cyan); }
 
 /* ---------- Sector cards (home) ---------- */
 .sector-card {
