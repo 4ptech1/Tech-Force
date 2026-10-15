@@ -62,6 +62,19 @@ Tips:
 - **Make each sector recognisable.** Include a sector cue in every shot: a pipeline drawing, an aircraft part, a bogie drawing, a truck chassis. Otherwise five meeting-room photos look identical.
 - **Don't caption AI-generated people as your team.** The alt text describes them as consultants in a meeting, which is accurate; don't add "Meet our engineers" style labels.
 
+### Brand kit (`brand/`)
+
+Logo files with the tagline *"Experts in Failure Analysis & Welding Technology"*, for letterheads, visiting cards, proposals, email signatures and social profiles:
+
+| File | Use it on |
+|---|---|
+| `tech-force-logo-tagline.png` | White or light backgrounds (transparent PNG) |
+| `tech-force-logo-tagline-dark.png` | Navy or dark backgrounds (transparent PNG) |
+| `tech-force-logo-tagline-square-white.png` | Profile pictures, WhatsApp DP, documents (2000 × 2000) |
+| `tech-force-logo-tagline-square-navy.png` | LinkedIn and other social profiles (2000 × 2000) |
+
+The tagline is set in Open Sans (free, open licence), the closest match to the logo's "Consulting Engineers" lettering. Keep it at least about 40 mm wide in print so the tagline stays readable.
+
 ---
 
 ## ✅ Before going live (10-minute checklist)
