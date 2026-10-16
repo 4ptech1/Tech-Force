@@ -23,13 +23,19 @@ const SECTORS = [
     'defence'        => 'Defence',
     'aerospace'      => 'Aerospace',
     'railways'       => 'Railways',
-    'transportation' => 'Transportation',
+    'transportation' => 'Automotive & Transportation',
+    'power'          => 'Power Generation & Energy',
+    'marine'         => 'Shipbuilding & Marine',
+    'heavy'          => 'Heavy Engineering & Fabrication',
     'other'          => 'Other',
 ];
 const SERVICES = [
-    'failure-analysis' => 'Material Failure Analysis',
-    'welding'          => 'Joining & Welding Engineering',
-    'both'             => 'Both / Not sure yet',
+    'failure-analysis' => 'Failure Analysis & RCA',
+    'welding'          => 'Welding Engineering & Technology',
+    'materials'        => 'Materials Technology & Metallurgy',
+    'design'           => 'Design Engineering & Optimisation',
+    'manufacturing'    => 'Manufacturing Excellence',
+    'both'             => 'Multiple / Not sure yet',
 ];
 
 // ------------------------------------------------------------------ helpers
