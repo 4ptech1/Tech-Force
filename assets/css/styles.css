@@ -44,7 +44,8 @@
   --gutter: 20px;
   --radius: 10px;
   --radius-sm: 6px;
-  --header-h: 72px;
+  --header-top: 152px;      /* header at the top of the page: full logo, tagline readable */
+  --header-h: 72px;         /* header once the page scrolls */
   --shadow-sm: 0 1px 2px rgba(17, 24, 52, .06), 0 1px 3px rgba(17, 24, 52, .08);
   --shadow-md: 0 10px 30px -12px rgba(17, 24, 52, .25);
 }
@@ -55,6 +56,7 @@ html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) 
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 body {
   margin: 0;
+  padding-top: var(--header-top); /* room for the fixed header */
   font-family: var(--font-sans);
   font-size: 1.0625rem;
   line-height: 1.65;
@@ -108,8 +110,9 @@ ul, ol { margin: 0; padding: 0; }
 .btn--sm { min-height: 40px; padding: .5em 1.05em; font-size: .9375rem; }
 
 /* ---------- Header / navigation ---------- */
+/* Fixed, so slimming it on scroll never moves the page content. */
 .site-header {
-  position: sticky; top: 0; z-index: 50;
+  position: fixed; inset: 0 0 auto; z-index: 50;
   background: rgba(255, 255, 255, .96);
   border-bottom: 1px solid var(--line);
   transition: box-shadow .2s ease;
@@ -118,13 +121,17 @@ ul, ol { margin: 0; padding: 0; }
   .site-header { background: rgba(255, 255, 255, .88); backdrop-filter: saturate(180%) blur(10px); }
 }
 .site-header.is-scrolled { box-shadow: var(--shadow-sm); }
-.site-header .container { display: flex; align-items: center; gap: 24px; height: var(--header-h); }
+.site-header .container {
+  display: flex; align-items: center; gap: 24px; height: var(--header-top);
+  transition: height .25s ease;
+}
+.site-header.is-scrolled .container { height: var(--header-h); }
 
-.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-right: auto; }
-.brand img { width: 43px; height: 40px; }
-.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
-.brand-name { font-weight: 600; font-size: 1.125rem; color: var(--ink); letter-spacing: .06em; text-transform: uppercase; }
-.brand-tag { font-size: .75rem; color: var(--navy); letter-spacing: .14em; margin-top: 3px; }
+.brand { display: flex; align-items: center; text-decoration: none; margin-right: auto; }
+.brand img { width: auto; height: calc(var(--header-top) - 24px); transition: height .25s ease; }
+.site-header.is-scrolled .brand img { height: calc(var(--header-h) - 16px); }
+@media (max-width: 1024px) { :root { --header-top: 128px; } }
+@media (max-width: 760px) { :root { --header-top: 104px; --header-h: 64px; } }
 
 .site-nav ul { display: flex; align-items: center; gap: 4px; list-style: none; }
 .site-nav a:not(.btn) {
@@ -148,7 +155,8 @@ ul, ol { margin: 0; padding: 0; }
 @media (max-width: 820px) {
   .nav-toggle { display: inline-flex; }
   .site-nav {
-    position: absolute; inset: var(--header-h) 0 auto 0;
+    position: absolute; inset: 100% 0 auto 0; /* just below the header, whatever its height */
+    max-height: calc(100vh - var(--header-h)); overflow-y: auto;
     background: #fff; border-bottom: 1px solid var(--line); box-shadow: var(--shadow-md);
     display: none;
   }
@@ -158,9 +166,6 @@ ul, ol { margin: 0; padding: 0; }
   .site-nav a[aria-current="page"] { box-shadow: inset 3px 0 0 var(--cyan); padding-left: 14px; }
   .site-nav .nav-cta { margin: 16px 0 0; }
   .site-nav .nav-cta .btn { width: 100%; }
-}
-@media (max-width: 380px) {
-  .brand-tag { display: none; }
 }
 
 /* ---------- Shared section scaffolding ---------- */
@@ -188,18 +193,29 @@ ul, ol { margin: 0; padding: 0; }
 .hero { position: relative; isolation: isolate; color: #d7def2; overflow: hidden; background: var(--navy-900); }
 .hero-media, .hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hero-media { z-index: -2; }
-.hero-media img { object-fit: cover; object-position: 70% 30%; }
-.hero::before { /* dark behind the copy, opening up so the meeting photo shows on the right */
+.hero-media img { object-fit: cover; object-position: 100% 50%; } /* keep the right-hand tiles in view */
+.hero::before { /* dark behind the copy, opening up so the collage shows on the right */
   content: ""; position: absolute; inset: 0; z-index: -1;
   background:
-    linear-gradient(0deg, rgba(11, 17, 46, .92) 0%, rgba(11, 17, 46, 0) 32%),
-    linear-gradient(100deg, rgba(11, 17, 46, .97) 0%, rgba(18, 26, 66, .9) 38%, rgba(18, 26, 66, .45) 62%, rgba(18, 26, 66, .2) 100%);
+    radial-gradient(70% 55% at 0% 100%, rgba(11, 17, 46, .85) 0%, rgba(11, 17, 46, 0) 100%),
+    linear-gradient(100deg, rgba(11, 17, 46, .96) 0%, rgba(18, 26, 66, .9) 40%, rgba(18, 26, 66, .62) 57%, rgba(18, 26, 66, .15) 74%, rgba(18, 26, 66, .04) 100%);
 }
+/* Tablets: the copy runs further across the collage, so keep more of it dark. */
+@media (min-width: 761px) and (max-width: 1024px) {
+  .hero::before {
+    background: linear-gradient(100deg, rgba(11, 17, 46, .95) 0%, rgba(18, 26, 66, .9) 50%, rgba(18, 26, 66, .72) 76%, rgba(18, 26, 66, .4) 100%);
+  }
+}
+/* Phones: the collage sits at the top and fades into navy under the headline. */
 @media (max-width: 760px) {
-  .hero::before { background: linear-gradient(180deg, rgba(11, 17, 46, .9) 0%, rgba(18, 26, 66, .8) 100%); }
+  .hero .hero-media { bottom: auto; height: 75vw; }
+  .hero::before {
+    background: linear-gradient(180deg, rgba(11, 17, 46, .05) 0, rgba(11, 17, 46, .2) 40vw, rgba(18, 26, 66, .8) 62vw, var(--navy-900) 75vw);
+  }
 }
 .hero .container { padding-block: clamp(72px, 12vw, 136px) clamp(48px, 7vw, 80px); }
-.hero-copy { max-width: 760px; }
+@media (max-width: 760px) { .hero .container { padding-top: 68vw; } }
+.hero-copy { max-width: 640px; }
 .hero .eyebrow { color: var(--cyan-300); }
 .hero h1 { color: #fff; margin-bottom: .45em; }
 .hero h1 .accent { color: var(--cyan); }
@@ -208,7 +224,7 @@ ul, ol { margin: 0; padding: 0; }
 
 /* Two-pillar strip at the foot of the hero */
 .hero-pillars {
-  list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 920px;
+  list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 640px;
   margin-top: clamp(56px, 8vw, 88px); border-top: 1px solid rgba(255, 255, 255, .16);
 }
 .hero-pillars li { padding: 22px 32px 0 0; }
@@ -511,7 +527,7 @@ ul, ol { margin: 0; padding: 0; }
 /* ---------- Footer ---------- */
 .site-footer { background: var(--navy-950); color: #a9b4d3; font-size: .9375rem; }
 .footer-top { display: grid; gap: 40px; grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr)); padding-block: 64px 48px; }
-@media (max-width: 900px) { .footer-top { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 1200px) { .footer-top { grid-template-columns: repeat(2, minmax(0, 1fr)); } } /* email needs ~205px */
 @media (max-width: 520px) { .footer-top { grid-template-columns: minmax(0, 1fr); } }
 .footer-logo { display: inline-block; }
 .footer-logo img { width: 280px; height: auto; }

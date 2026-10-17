@@ -7,10 +7,10 @@
     el.textContent = new Date().getFullYear();
   });
 
-  // ---------- Header shadow once the page scrolls ----------
+  // ---------- Slim header (smaller logo, shadow) once the page scrolls ----------
   var header = document.querySelector('[data-header]');
   if (header) {
-    var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 8); };
+    var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 24); };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   }

@@ -25,44 +25,43 @@ The static two-page website for **[www.techforceconsulting.com](https://www.tech
     ├── js/main.js         Mobile menu, form submission, small helpers
     ├── fonts/             IBM Plex Sans & Mono (self-hosted, open-source licence)
     └── images/
-        ├── logo-mark.png                             TF monogram (header)
+        ├── logo-full.png                             Full logo + tagline (header, and the logo shown by Google)
         ├── logo-full-light.png                       Full logo + tagline (footer, on navy)
-        ├── logo-full.png                             Full logo + tagline (logo shown by Google)
-        ├── consulting-hero-boardroom.jpg             Home hero background
-        ├── consulting-lab-metallurgy.jpg             Services page header background
-        ├── consulting-meeting-<sector>.jpg           The five sector cards
+        ├── hero-collage-2400.webp                    Home banner collage (desktop)
+        ├── hero-collage-mobile-800/1200.webp         Home banner collage (phones: right-hand part)
+        ├── services-header-refinery.webp             Services page header background
+        ├── sector-<sector>.webp                      Sector card photos (oil-gas, defence, aerospace, railways)
+        ├── consulting-meeting-transportation.jpg     Automotive & Transport card photo
         ├── og-image.jpg            Branded preview card for WhatsApp/LinkedIn shares
         ├── apple-touch-icon.png
         └── favicon-64.png
 ```
 
+### Header
+
+The header shows the full logo, tagline included, at the top of every page. Once a visitor scrolls, it slims to a 72 px bar with the same logo, smaller. The tagline also appears as readable text above the home-page headline.
+
 ### Photos
 
-All seven photos are in place. Every one comes from your AI-generated consulting collage, so there are no stock-photo licences to worry about.
+The banner collage, the services header and four of the sector photos come from the "Assignments" reference images you supplied. You confirmed you own them or are licensed to use them commercially. All of them share one colour treatment: even exposure, slightly softer colour, and shadows tinted towards the brand navy.
 
-- **Sector cards:** cropped to 16:9. The baked-in labels and the "restricted/confidential" document markings were removed.
-- **Home hero:** formally dressed consultants discussing reports around a conference table. The headline side is darkened for readability, and the people show clearly on the right.
-- **Services header:** softened and darkened on purpose, so it reads as atmosphere behind the text.
+| File | Where it appears | Made from |
+|---|---|---|
+| `hero-collage-2400.webp` | Home banner, behind the headline | Offshore platform (R-1), refinery piping (R-5), rail, aerospace and defence panels (Gemini image), refinery columns (R-4), jet engine (2.jpg) |
+| `hero-collage-mobile-*.webp` | Home banner on phones | The right-hand part of the same collage |
+| `services-header-refinery.webp` | Services page header (darkened) | Refinery piping (R-5) |
+| `sector-oil-gas.webp` | Oil & Gas card | Offshore platform (R-1) |
+| `sector-defence.webp` | Defence card | Armoured vehicle (4.jpg) |
+| `sector-aerospace.webp` | Aerospace card | Jet engine inspection (Gemini image) |
+| `sector-railways.webp` | Railways card | Wheelset ultrasonic testing (Gemini image) |
+| `consulting-meeting-transportation.jpg` | Automotive & Transport card | Earlier AI-generated image; there was no automotive reference photo |
 
-> **Upgrade when you have time:** the collage was only 1024 px wide, so the photos are slightly soft on high-resolution screens. Regenerate each scene **on its own, at 1600 px wide or more, with no text labels**, and save it over the file with the same name. No code changes are needed. If a sector photo ever goes missing, its card shows a navy blueprint panel instead of a broken image.
-
-| Filename | Where it appears | Suggested scene for a regenerated version | Size |
-|---|---|---|---|
-| `consulting-hero-boardroom.jpg` | Home hero (people visible on the right; keep faces right of centre) | Indian engineering consultants reviewing diagnostic reports around a conference table | 1920 × 1080 |
-| `consulting-lab-metallurgy.jpg` | Services page header (darkened) | Consultants reviewing failure-analysis drawings in an engineering office or lab | 1920 × 1080 |
-| `consulting-meeting-oil-gas.jpg` | Oil & Gas card | Reviewing pipeline weld inspection reports in a meeting room | 1200 × 675 |
-| `consulting-meeting-defence.jpg` | Defence card | Examining metallurgical test reports in a modern lab | 1200 × 675 |
-| `consulting-meeting-aerospace.jpg` | Aerospace card | Discussing fractography results for an aerospace component | 1200 × 675 |
-| `consulting-meeting-railways.jpg` | Railways card | Reviewing bogie-frame welding blueprints | 1200 × 675 |
-| `consulting-meeting-transportation.jpg` | Transportation card | Discussing vehicle chassis failure diagnostics around a conference table | 1200 × 675 |
-
-Tips:
-
-- **Landscape 16:9.** Keep faces and key details away from the bottom-left of sector photos, because the sector name sits there.
+- **On desktop**, the left part of the banner sits under a dark overlay behind the headline. The clearly visible tiles are on the right: refinery, jet engine and the defence weld inspection.
+- **To replace a photo,** save the new one over the file with the same name. Use WebP, landscape 16:9 for sector cards (about 960 × 540), and keep faces and key details away from the bottom-left, where the sector name sits. If a sector photo ever goes missing, its card shows a navy blueprint panel instead of a broken image.
+- **Defence card:** the source photo (4.jpg) is only 738 px wide, so it's a little soft on high-resolution screens. A larger version would help.
+- **Automotive & Transport card:** this is still the earlier meeting-room image. A photo of a vehicle chassis, an axle or a weld line would match the other cards better.
+- **People in the Gemini image are AI-generated.** The alt text describes what they're doing, which is accurate. Don't caption them as your team.
 - **Never include** classified-looking stamps or real company logos.
-- **Compress before uploading:** aim for under 300 KB for the hero and header, and under 150 KB for each card (squoosh.app, "MozJPEG", quality about 75).
-- **Make each sector recognisable.** Include a sector cue in every shot: a pipeline drawing, an aircraft part, a bogie drawing, a truck chassis. Otherwise five meeting-room photos look identical.
-- **Don't caption AI-generated people as your team.** The alt text describes them as consultants in a meeting, which is accurate; don't add "Meet our engineers" style labels.
 
 ### Brand kit (`brand/`)
 
@@ -87,7 +86,7 @@ All four are made from the approved logo artwork (italic tagline under a thin ce
 2. **Check the copy against what you actually offer.**
    - This applies especially to the standards listed (ASME IX, API 1104, AWS D17.1, EN 15085, BS 7910, NACE MR0175, RDSO and so on), the testing methods (SEM, eddy current and so on) and advanced joining (laser, electron-beam, fitness-for-purpose assessment).
    - Remove anything you can't deliver yourself or through a partner lab.
-3. **Images:** all photos are your own AI-generated artwork. Don't add any document stamps, client logos or "classified" markings when you regenerate them.
+3. **Images:** the photos come from the reference set you supplied and confirmed you're licensed to use (see *Photos* above). Don't add document stamps, client logos or "classified" markings to any replacement.
 4. **Contact details:** consider adding a phone number and city to the footer and contact section. Indian B2B buyers often call first.
 
 ---
