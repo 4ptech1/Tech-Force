@@ -25,7 +25,9 @@ The static two-page website for **[www.techforceconsulting.com](https://www.tech
     ├── js/main.js         Mobile menu, form submission, small helpers
     ├── fonts/             IBM Plex Sans & Mono (self-hosted, open-source licence)
     └── images/
-        ├── logo-mark.png / logo-mark-light.png      TF monogram (header / footer)
+        ├── logo-mark.png                             TF monogram (header)
+        ├── logo-full-light.png                       Full logo + tagline (footer, on navy)
+        ├── logo-full.png                             Full logo + tagline (logo shown by Google)
         ├── consulting-hero-boardroom.jpg             Home hero background
         ├── consulting-lab-metallurgy.jpg             Services page header background
         ├── consulting-meeting-<sector>.jpg           The five sector cards
