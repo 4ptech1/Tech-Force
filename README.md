@@ -30,8 +30,7 @@ The static two-page website for **[www.techforceconsulting.com](https://www.tech
         ├── hero-collage-2400.webp                    Home banner collage (desktop)
         ├── hero-collage-mobile-800/1200.webp         Home banner collage (phones: right-hand part)
         ├── services-header-refinery.webp             Services page header background
-        ├── sector-<sector>.webp                      Sector card photos (oil-gas, defence, aerospace, railways)
-        ├── consulting-meeting-transportation.jpg     Automotive & Transport card photo
+        ├── sector-<sector>.webp                      Sector card photos (oil-gas, defence, aerospace, railways, transportation)
         ├── og-image.jpg            Branded preview card for WhatsApp/LinkedIn shares
         ├── apple-touch-icon.png
         └── favicon-64.png
@@ -54,12 +53,11 @@ The banner collage, the services header and four of the sector photos come from 
 | `sector-defence.webp` | Defence card | Armoured vehicle (4.jpg) |
 | `sector-aerospace.webp` | Aerospace card | Jet engine inspection (Gemini image) |
 | `sector-railways.webp` | Railways card | Wheelset ultrasonic testing (Gemini image) |
-| `consulting-meeting-transportation.jpg` | Automotive & Transport card | Earlier AI-generated image; there was no automotive reference photo |
+| `sector-transportation.webp` | Automotive & Transport card | Automotive components (supplied separately) |
 
 - **On desktop**, the left part of the banner sits under a dark overlay behind the headline. The clearly visible tiles are on the right: refinery, jet engine and the defence weld inspection.
 - **To replace a photo,** save the new one over the file with the same name. Use WebP, landscape 16:9 for sector cards (about 960 × 540), and keep faces and key details away from the bottom-left, where the sector name sits. If a sector photo ever goes missing, its card shows a navy blueprint panel instead of a broken image.
-- **Defence card:** the source photo (4.jpg) is only 738 px wide, so it's a little soft on high-resolution screens. A larger version would help.
-- **Automotive & Transport card:** this is still the earlier meeting-room image. A photo of a vehicle chassis, an axle or a weld line would match the other cards better.
+- **Defence and Automotive & Transport cards:** the source photos are only about 740 px wide, so they're a little soft on high-resolution screens. Larger versions would help.
 - **People in the Gemini image are AI-generated.** The alt text describes what they're doing, which is accurate. Don't caption them as your team.
 - **Never include** classified-looking stamps or real company logos.
 
