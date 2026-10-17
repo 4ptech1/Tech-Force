@@ -73,7 +73,7 @@ Logo files with the tagline *"Experts in Failure Analysis & Welding Technology"*
 | `tech-force-logo-tagline-square-white.png` | Profile pictures, WhatsApp DP, documents (2000 × 2000) |
 | `tech-force-logo-tagline-square-navy.png` | LinkedIn and other social profiles (2000 × 2000) |
 
-The tagline is set in Open Sans (free, open licence), the closest match to the logo's "Consulting Engineers" lettering. Keep it at least about 40 mm wide in print so the tagline stays readable.
+All four are made from the approved logo artwork (italic tagline under a thin cerulean rule), redrawn in the exact brand navy and cerulean on a clean transparent background. Keep it at least about 40 mm wide in print so the tagline stays readable.
 
 ---
 
