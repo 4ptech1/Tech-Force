@@ -80,7 +80,7 @@ All four are made from the approved logo artwork (italic tagline under a thin ce
 
 ## ✅ Before going live (10-minute checklist)
 
-1. **Create the mailbox** `info@techforceconsulting.com` in **hPanel → Emails**.
+1. **Create the mailboxes** `info@techforceconsulting.com` and `shivansh@techforceconsulting.com` in **hPanel → Emails**. Both appear on the site; the contact form delivers to `info@`.
    - The form sends from and to this address. Hostinger only delivers PHP mail when the "From" address is a real mailbox on your domain.
    - To use a different address, edit `RECIPIENT` and `FROM_ADDRESS` at the top of `contact.php`, and update the email shown in both HTML pages.
 2. **Check the copy against what you actually offer.**

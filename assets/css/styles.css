@@ -9,6 +9,10 @@
   src: url("../fonts/ibm-plex-sans-latin.woff2") format("woff2");
 }
 @font-face {
+  font-family: "IBM Plex Sans"; font-style: italic; font-weight: 100 700; font-display: swap;
+  src: url("../fonts/ibm-plex-sans-italic-latin.woff2") format("woff2");
+}
+@font-face {
   font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap;
   src: url("../fonts/ibm-plex-mono-500-latin.woff2") format("woff2");
 }
@@ -217,8 +221,20 @@ ul, ol { margin: 0; padding: 0; }
     background: linear-gradient(180deg, rgba(11, 17, 46, .05) 0, rgba(11, 17, 46, .2) 40vw, rgba(18, 26, 66, .8) 62vw, var(--navy-900) 75vw);
   }
 }
-.hero .container { padding-block: clamp(72px, 12vw, 136px) clamp(48px, 7vw, 80px); }
-@media (max-width: 760px) { .hero .container { padding-top: 68vw; } }
+.hero .container { padding-block: clamp(56px, 9vw, 104px) clamp(48px, 7vw, 80px); }
+@media (max-width: 760px) { .hero .container { padding-top: 54vw; } }
+
+/* Tagline band across the top of the banner, echoing the logo's italic tagline */
+.hero-tagline {
+  display: flex; align-items: center; justify-content: center; gap: 18px;
+  margin: 0; padding: 16px var(--gutter); text-align: center;
+  font: italic 500 clamp(1.0625rem, 1.8vw, 1.5rem)/1.35 var(--font-sans);
+  letter-spacing: .07em; text-transform: uppercase; color: var(--cyan-300);
+  background: rgba(11, 17, 46, .78); border-bottom: 1px solid rgba(38, 168, 224, .3);
+}
+@supports (backdrop-filter: blur(8px)) { .hero-tagline { background: rgba(11, 17, 46, .62); backdrop-filter: blur(8px); } }
+.hero-tagline::before, .hero-tagline::after { content: ""; flex: none; width: 40px; height: 2px; background: var(--cyan); }
+@media (max-width: 640px) { .hero-tagline::before, .hero-tagline::after { display: none; } }
 .hero-copy { max-width: 640px; }
 .hero .eyebrow { color: var(--cyan-300); }
 .hero h1 { color: #fff; margin-bottom: .45em; }
@@ -484,6 +500,7 @@ ul, ol { margin: 0; padding: 0; }
 .contact-card + .contact-card { margin-top: 12px; }
 .contact-card svg { width: 22px; height: 22px; color: var(--cyan-700); flex: none; margin-top: 2px; }
 .contact-card span { display: block; font-size: .8125rem; color: var(--muted); }
+.contact-card a { display: block; }
 .contact-card a, .contact-card strong { font-weight: 600; color: var(--ink); font-size: 1rem; word-break: break-word; }
 
 .form-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow-md); padding: clamp(24px, 4vw, 40px); }
@@ -530,16 +547,21 @@ ul, ol { margin: 0; padding: 0; }
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--navy-950); color: #a9b4d3; font-size: .9375rem; }
-.footer-top { display: grid; gap: 40px; grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr)); padding-block: 64px 48px; }
-@media (max-width: 1200px) { .footer-top { grid-template-columns: repeat(2, minmax(0, 1fr)); } } /* email needs ~205px */
-@media (max-width: 520px) { .footer-top { grid-template-columns: minmax(0, 1fr); } }
+/* Logo centred on top, then the three link columns */
+.footer-brand { display: flex; flex-direction: column; align-items: center; text-align: center; padding-block: 64px 40px; }
 .footer-logo { display: inline-block; }
-.footer-logo img { width: 280px; height: auto; }
-.footer-brand p { margin-top: 18px; max-width: 360px; }
+.footer-logo img { width: 300px; height: auto; }
+.footer-brand p { margin: 20px 0 0; max-width: 460px; }
+.footer-top {
+  display: grid; gap: 40px; grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding-block: 40px 52px; text-align: center; border-top: 1px solid rgba(255, 255, 255, .1);
+}
+@media (max-width: 640px) { .footer-top { grid-template-columns: minmax(0, 1fr); gap: 32px; } }
+.site-footer .footer-top a { overflow-wrap: anywhere; } /* long email addresses on narrow columns */
 .site-footer h2 { font: 600 .75rem var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: #fff; margin-bottom: 16px; }
 .site-footer ul { list-style: none; display: grid; gap: 10px; }
 .site-footer a { color: #c9d2ea; text-decoration: none; }
 .site-footer a:hover { color: var(--cyan); text-decoration: underline; }
 .footer-bottom { border-top: 1px solid rgba(255, 255, 255, .1); }
-.footer-bottom .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 22px; font-size: .875rem; }
+.footer-bottom .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 32px; text-align: center; padding-block: 22px; font-size: .875rem; }
 .footer-bottom p { margin: 0; }
